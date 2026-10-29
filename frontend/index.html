@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Folio &middot; RAG Knowledge Assistant</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="app">
+
+  <aside class="side" id="side">
+    <div class="brand">
+      <svg viewBox="0 0 32 32" width="34" height="34" aria-hidden="true">
+        <rect x="2" y="2" width="28" height="28" rx="8" fill="#0e7c86"/>
+        <path d="M11 23V9h9.5M11 16h7" fill="none" stroke="#f4efe4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="24" cy="9" r="2.4" fill="#e9a23b"/>
+      </svg>
+      <div>
+        <strong>Folio</strong>
+        <small>Your AI-powered Knowledge Assistant</small>
+      </div>
+    </div>
+
+    <section class="panel" id="status" aria-live="polite"></section>
+
+    <section class="panel">
+      <h3>Knowledge base</h3>
+      <div class="seg dark" id="ocrSeg" role="radiogroup" aria-label="OCR option">
+        <button type="button" role="radio" aria-checked="true" data-ocr="false" class="on">OCR not needed</button>
+        <button type="button" role="radio" aria-checked="false" data-ocr="true">OCR needed</button>
+      </div>
+      <p class="hint" id="ocrHint">Best for PDFs with selectable text. Fast.</p>
+
+      <label class="drop" id="drop" tabindex="0">
+        <input type="file" id="file" accept="application/pdf,.pdf" multiple hidden>
+        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4m0 0L7.5 8.5M12 4l4.5 4.5M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg>
+        <span>Drop PDFs here or click to browse</span>
+      </label>
+
+      <div class="prog" id="prog" hidden>
+        <div class="prog-top"><span id="progMsg"></span><b id="progPct"></b></div>
+        <div class="bar"><i id="progBar"></i></div>
+      </div>
+      <p class="err" id="upErr" hidden></p>
+
+      <ul class="docs" id="docs"></ul>
+    </section>
+  </aside>
+  <div class="scrim" id="scrim"></div>
+
+  <main class="main">
+    <header class="top">
+      <button class="icon menu" id="menuBtn" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <h1>Ask a question, get an answer from your documents</h1>
+      <button class="ghost" id="clearBtn" type="button">New conversation</button>
+    </header>
+
+    <div class="feed" id="feed">
+      <div class="hero" id="hero">
+        <h2>Whatever your PDFs say, that is what you get back.</h2>
+        <p>Add documents in the left panel, choose a language and answer type below, then ask. Folio remembers your earlier questions, so follow-ups work naturally.</p>
+        <div class="tips">
+          <button type="button" data-q="What is the main topic of this document?">What is the main topic?</button>
+          <button type="button" data-q="List the key decisions and figures in brief.">Key decisions and figures</button>
+          <button type="button" data-q="Summarize this document in simple words.">Summarize this document</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="composer">
+      <div class="ctrl">
+        <div class="seg" id="langSeg" aria-label="Answer language">
+          <button type="button" data-v="en" class="on">English</button>
+          <button type="button" data-v="bn">Bengali</button>
+          <button type="button" data-v="hi">Hindi</button>
+        </div>
+        <div class="seg" id="modeSeg" aria-label="Answer type">
+          <button type="button" data-v="short" class="on" title="Under 200 words">Short Answer</button>
+          <button type="button" data-v="describe" title="200 to 500 words">Describe Answer</button>
+          <button type="button" data-v="research" title="More than 500 words">Research Answer</button>
+        </div>
+      </div>
+      <div class="box">
+        <textarea id="q" rows="1" placeholder="Type your question..." aria-label="Question"></textarea>
+        <button id="send" class="send" type="button" aria-label="Send">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+    </div>
+  </main>
+</div>
+<script src="/app.js"></script>
+</body>
+</html>

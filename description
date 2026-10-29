@@ -1,0 +1,138 @@
+📂 Folio: RAG Knowledge Assistant
+Turn Your PDFs Into an AI Assistant That Actually Answers
+🔷 Project Title
+
+Folio: RAG Knowledge Assistant | FastAPI + FAISS | OpenAI → Groq → Ollama Fallback | PDF Q&A with OCR (English and Bangla)
+
+✨ Overview
+
+Is your most valuable knowledge buried in PDFs that nobody has time to read?
+
+Folio is a complete Retrieval-Augmented Generation (RAG) assistant that reads your PDF documents and answers questions about them in real time. Answers are streamed word by word and presented clean, structured and professional. It answers from your documents, not from guesswork.
+
+I designed and built the whole system myself: backend, vector search, multi-provider AI logic, OCR pipeline and a modern user interface.
+
+🎯 The Business Problem It Solves
+
+Most organizations keep critical information in PDFs: policies, manuals, contracts, reports, handbooks and research papers. This creates real problems:
+
+❌ Hours are wasted searching hundreds of pages for one answer
+❌ Staff and support teams answer the same questions again and again
+❌ Generic ChatGPT doesn’t know your documents and may invent answers (hallucination)
+❌ Scanned PDFs can’t be searched or copied
+❌ If one AI provider goes down or hits its limit, everything stops
+
+✅ Folio addresses every one of these problems.
+
+👥 Who Needs This?
+
+🏢 Companies and HR teams: instant answers from policies, SOPs and handbooks
+🎓 Schools and universities: syllabus, regulations and research-paper Q&A
+⚖️ Legal and consulting firms: fast lookup across contracts and case files
+🏥 Healthcare and NGOs: quick access to guidelines and reports
+🛒 Customer support teams: manual-based automated assistance
+🚀 Startups and SaaS founders: add a “Chat with your documents” feature to your product
+
+💎 Key Features
+📄 1. PDF-Based Knowledge Base
+
+Answers come from the PDFs you upload, so responses are grounded in your own data.
+
+🔍 2. Smart OCR Option
+
+When uploading, choose “OCR needed” or “OCR not needed.” For scanned or image-based PDFs, Tesseract OCR extracts the text (Bangla supported) and adds it to the knowledge base automatically.
+
+➕ 3. Live Knowledge Expansion
+
+Upload a new PDF at any time. It is appended to the knowledge base and is searchable from the very next question. No restart and no redeployment.
+
+🛡️ 4. Triple-Layer AI Fallback (Never Goes Down)
+
+🥇 OpenAI: top quality, used first when an API key is present
+🥈 Groq: fast free-tier LLM, used if OpenAI is missing or fails
+🥉 Ollama: fully local, works offline, ideal for testing and privacy
+
+Switching is done through a simple .env file with zero code changes. Embeddings use OpenAI, with Ollama as the fallback.
+
+🧩 5. Provider-Aware Vector Index
+
+Each embedding provider and model gets its own FAISS index. When you switch providers, existing PDF chunks are re-embedded automatically, which avoids dimension-mismatch errors.
+
+⚡ 6. Real-Time Streaming
+
+Answers appear token by token, like ChatGPT, so users never stare at a loading screen.
+
+🧼 7. Clean, Professional Output
+
+A dedicated cleaner module removes raw formatting artifacts such as stray \n\n, +, -- and __, so responses are neat and easy to read.
+
+🧠 8. Conversation Memory
+
+Folio remembers earlier questions, so follow-ups like “What’s the next step?” work naturally.
+
+📏 9. Answer Length Control
+
+Users choose the language and the depth of the answer:
+
+📌 Short Answer: under 200 words
+📌 Describe Answer: 200 to 500 words
+📌 Research Answer: 500+ words
+
+🎨 10. Modern, Attractive Interface
+
+A polished UI built with HTML, CSS and vanilla JavaScript, with no heavy frameworks.
+
+🛠️ Tech Stack
+
+🖥️ Frontend: HTML, CSS, Vanilla JavaScript
+⚙️ Backend: Python 3.12, FastAPI
+🗄️ Vector Database: FAISS
+🤖 LLM / Embeddings: OpenAI, Groq, Ollama
+👁️ OCR: Tesseract (with Bengali language data)
+
+🧠 Why This Project Is Technically Challenging
+
+Folio is far more than a basic “PDF chatbot.” Making it production-ready meant solving:
+
+1️⃣ Multi-provider resilience: three APIs with different behaviors unified behind one interface, with seamless fallback on failure
+2️⃣ Embedding dimension management: different models produce different vector sizes, so I built separate indexes and automatic re-embedding
+3️⃣ Incremental indexing: new PDFs are added without reprocessing everything
+4️⃣ OCR integration: reliable text extraction from scanned English and Bangla documents
+5️⃣ End-to-end streaming: token-by-token delivery from FastAPI to the browser
+6️⃣ Output quality control: turning raw LLM output into clean, professional text
+7️⃣ Bilingual support: questions, answers and OCR in Bangla and English
+8️⃣ Model compatibility: identified and documented that newer OpenAI models (such as the gpt-5 series) don’t accept max_tokens
+
+💼 Skills Demonstrated
+
+✔️ End-to-end RAG system design and implementation
+✔️ FastAPI async backend and streaming APIs
+✔️ FAISS vector search and embedding pipelines
+✔️ LLM integration with OpenAI, Groq and Ollama
+✔️ Prompt engineering for language and length control
+✔️ OCR integration with Tesseract
+✔️ Clean, modular architecture (config, providers, rag, ingest, vectorstore, memory and cleaner modules)
+✔️ Frontend UI/UX with HTML, CSS and JS
+✔️ Clear documentation and easy setup
+
+📦 What You Get
+
+✅ Complete source code (frontend and backend)
+✅ Ready-to-configure .env.example
+✅ Detailed README (setup, OCR installation, provider configuration)
+✅ Setup instructions for Windows, macOS and Linux
+✅ Test locally with Ollama, then go live with OpenAI or Groq without changing any code
+
+🤝 Why Work With Me?
+
+🎯 I solve your business problem, not just write code
+🛡️ I build for real-world reliability with fallbacks and error handling
+💰 I help you control costs with free and local options
+📖 I deliver clear documentation your team can use right away
+🔧 I customize the solution to your documents and workflow
+
+📣 Ready to Make Your Documents Talk?
+
+Send me a message with a sample of your documents and what you want to achieve. I’ll reply with a clear plan and timeline.
+
+💬 “Don’t just store your knowledge. Make it answer.”
