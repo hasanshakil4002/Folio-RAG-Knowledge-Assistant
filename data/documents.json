@@ -1,11 +1,11 @@
 {
- "3867710a8a": {
-  "id": "3867710a8a",
-  "name": "Gravity.pdf",
-  "pages": 4,
-  "chunks": 6,
-  "ocr": false,
-  "file": "d2f363f6b4f6477f8533ab37a0d07c5e.pdf",
-  "added": "2026-10-20 13:36"
+ "e687a6f261": {
+  "id": "e687a6f261",
+  "name": "Pandas_Cheat_Sheet.pdf",
+  "pages": 3,
+  "chunks": 19,
+  "ocr": true,
+  "file": "5228e3fd150c4902b3b9860b52b78bae.pdf",
+  "added": "2026-10-30 18:53"
  }
 }
